@@ -1,0 +1,31 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="{{channel_avatar}}" type="image/x-icon"/>
+    <link rel="canonical" itemprop="mainEntityOfPage" href="{{url}}"/>
+    <meta property="og:url" content="{{url}}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{channel_name}}"/>
+    <meta property="og:description" content="{{channel_description_clean}}"/>
+    <meta property="og:image" itemprop="image" content="{{channel_avatar}}"/>
+    <title itemprop="headline">{{channel_title}} @ telegram</title>
+    <style>
+        .wrapper {
+            margin-right: auto; /* 1 */
+            margin-left: auto; /* 1 */
+
+            max-width: 800px; /* 2 */
+
+            padding-right: 10px; /* 3 */
+            padding-left: 10px; /* 3 */
+            font-family: "PT Sans",Helvetica,Arial,sans;
+            font-size: 20px;
+        }
+
+        img {
+            float: left;
+            margin: 5px 10px 10px 5px;
+            width: 72px
+        }
+    </style>
+</head>

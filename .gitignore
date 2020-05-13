@@ -1,0 +1,7 @@
+.idea
+*.iml
+avatar_photo.jpg
+index.html
+posts.json
+*.session
+.env

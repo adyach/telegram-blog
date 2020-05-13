@@ -1,0 +1,9 @@
+<html>
+{{head}}
+<body>
+{{header}}
+<posts>
+    {{posts}}
+</posts>
+</body>
+</html>

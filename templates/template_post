@@ -1,0 +1,10 @@
+<post>
+    <header>
+        <p class="wrapper" style="font-size:14px;margin-top:50px;margin-bottom:-20px;">
+            <a href="tg://resolve?domain={{channel_name}}">{{channel_title}}</a>,
+            <a href="/" style="color:gray">{{post_date}}</a></p>
+    </header>
+    <div class="wrapper">
+        <p>{{post_text}}</p>
+    </div>
+</post>

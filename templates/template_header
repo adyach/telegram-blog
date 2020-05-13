@@ -1,0 +1,13 @@
+<header>
+    <div class="wrapper">
+        <a href="/"><img src="{{channel_avatar}}"/></a>
+        <div style="margin-left:100px;font-size:15px">
+            <h2><a href="/">{{channel_title}}</a></h2>
+            <p><a href="tg://resolve?domain={{channel_name}}"
+                  rel="nofollow,noopener">{{channel_title}} @ telegram</a>
+                <span>{{channel_members}} members, since {{channel_date}}</span>
+            </p>
+            <p>{{channel_description}}</p>
+        </div>
+    </div>
+</header>
