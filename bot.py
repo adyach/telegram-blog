@@ -17,7 +17,9 @@ class Config:
                  bot_token: str,
                  photo_name: str,
                  db_file: str,
-                 templates_path: str):
+                 templates_path: str,
+                 website_title: str,
+                 website_description: str):
         self.website_name = website_name
         self.channel_name = channel_name
         self.api_id = api_id
@@ -26,6 +28,8 @@ class Config:
         self.channel_photo_name = photo_name
         self.db_file_name = db_file
         self.templates_path = templates_path
+        self.website_title = website_title
+        self.website_description = website_description
 
     @staticmethod
     def load_from_env():
@@ -37,7 +41,9 @@ class Config:
                       os.getenv(
                           'TELEGRAM_CHANNEL_PHOTO_NAME', 'avatar_photo.jpg'),
                       os.getenv('TELEGRAM_DB_FILE_NAME', 'posts.json'),
-                      os.getenv('TEMPLATES_PATH', 'templates'))
+                      os.getenv('TEMPLATES_PATH', 'templates'),
+                      os.getenv('WEBSITE_TITLE', None),
+                      os.getenv('WEBSITE_DESCRIPTION', None))
 
     @staticmethod
     def _get_env_or_fail(varname) -> str:
@@ -97,19 +103,23 @@ class Bot:
             client.run_until_disconnected()
 
     def _create_html_and_write_to_disk(self, channel_info):
+        website_title = channel_info['title'] if self.config.website_title is None else self.config.website_title
+        website_description = channel_info[
+            'about'] if self.config.website_description is None else self.config.website_description
+
         header = self.template_header \
             .replace('{{channel_name}}', self.config.channel_name) \
-            .replace('{{channel_title}}', channel_info['title']) \
+            .replace('{{channel_title}}', website_title) \
             .replace('{{channel_members}}', channel_info['members']) \
             .replace('{{channel_date}}', channel_info['date']) \
-            .replace('{{channel_description}}', channel_info['about'].replace('\n', '</br>')) \
+            .replace('{{channel_description}}', website_description.replace('\n', '</br>')) \
             .replace('{{channel_avatar}}', self.config.channel_photo_name)
 
         head = self.template_head \
             .replace('{{url}}', self.config.website_name) \
             .replace('{{channel_name}}', self.config.channel_name) \
-            .replace('{{channel_title}}', channel_info['title']) \
-            .replace('{{channel_description_clean}}', channel_info['about']) \
+            .replace('{{channel_title}}', website_title) \
+            .replace('{{channel_description_clean}}', website_description.replace('\n', ' ')) \
             .replace('{{channel_avatar}}', self.config.channel_photo_name)
 
         post = ''
